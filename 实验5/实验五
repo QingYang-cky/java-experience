@@ -1,0 +1,72 @@
+ 1.【Person、Student、Employee类】（注：此题在书上原题基础上有修改）设计一个名为Person的类和它的两个名为Student和Employee子类。
+
+每个人都有姓名和电话号码。学生有年级状态（大一、大二、大三或大四）。将这些状态定义为常量。一个雇员有工资和受聘日期。定义一个名为MyDate的类，包含数据域：year（年）、month（月）和day（日）。将各个类的数据域进行封装，并设置合理的读写访问器。
+覆盖每个类中的toString方法，返回类名及相应的类中可以获取的所有信息构成的字符串，如Person类的toString方法返回“Person类：姓名为***  电话为***”；Student类的toString方法返回“Student类： 姓名为***  电话为***  年级为***”。
+
+在Student和Employee两个类中分别加入displayObject()方法，可以打印出对学生和雇员的提示消息，提示学生“to ***（学生姓名）：请按时交实验报告”，提示雇员“to ***（雇员姓名）：请按时上班”。
+
+目标输出任务：
+画出这些类的UML图。
+实现这些类。
+编写一个测试类，1）创建方法public static void m1(Person p)，显示p的姓名；2）创建方法public static void m2(Person p)，打印p的toString方法返回的字符串；3）创建方法public static void m3(Person p)，如果p是Student类或者Employee类的实例，分别调用它们的displayObject()；4）在主函数中创建Person、Student、Employee的对象实例，将它们均声明为Person类对象。将它们分别传入m1、m2和m3，体会多态。
+
+
+
+【课程类Course】改写程序清单10-6中的Course类。 使用ArrayList代替数组来存储学生。不应该改变Course类的原始合约（即不要改变构造方法和方法的方法头定义，包括返回类型、方法名及参数列表，但私有的成员可以改变）。
+程序清单10-6
+public class Course {
+  private String courseName;
+  private String[] students = new String[100];
+  private int numberOfStudents;
+    
+  public Course(String courseName) {
+    this.courseName = courseName;
+  }
+  
+  public void addStudent(String student) {
+    students[numberOfStudents] = student;
+    numberOfStudents++;
+  }
+  
+  public String[] getStudents() {
+    return students;
+  }
+
+  public int getNumberOfStudents() {
+    return numberOfStudents;
+  }  
+
+  public String getCourseName() {
+    return courseName;
+  }  
+  
+  public void dropStudent(String student) {
+    // Left as an exercise in Exercise 9.9
+  }
+}
+
+程序清单10-5
+【注意：请参考以下程序来测试Course类，同时注意在此段程序基础上，增加必要的代码，以完整地测试Course类中定义的所有方法】
+public class TestCourse {
+  public static void main(String[] args) {
+    Course course1 = new Course("Data Structures");
+    Course course2 = new Course("Database Systems");
+
+    course1.addStudent("Peter Jones");
+    course1.addStudent("Brian Smith");
+    course1.addStudent("Anne Kennedy");
+
+    course2.addStudent("Peter Jones");
+    course2.addStudent("Steve Smith");
+
+    System.out.println("Number of students in course1: "
+      + course1.getNumberOfStudents());
+    String[] students = course1.getStudents();
+    for (int i = 0; i < course1.getNumberOfStudents(); i++)
+      System.out.print(students[i] + ", ");
+    
+    System.out.println();
+    System.out.print("Number of students in course2: "
+      + course2.getNumberOfStudents());
+  }
+}
