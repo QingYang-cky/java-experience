@@ -11,14 +11,16 @@ public class experience3 {
         PrintWriter printWriter=new PrintWriter(file);
         Random random=new Random();
         for(int i=0;i<10;i++){
-            printWriter.print(random.nextInt(200)+" ");
+            printWriter.print(random.nextInt(200)+" ");//生成随机数并输入文件
         }
-        printWriter.close();
+        printWriter.close();//关闭文件
+        
         Scanner in=new Scanner(file);
         int []A=new int[10];
         for(int i=0;i<10;i++){
-            A[i]=in.nextInt();
+            A[i]=in.nextInt();//读取进数组
         }
+        
         Arrays.sort(A);
         for(int i=0;i<10;i++)
             System.out.print(A[i]+" ");
